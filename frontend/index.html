@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AtomAlign - Atomberg's internal Goal Setting & Tracking Portal for employees, managers and HR." />
+    <title>AtomAlign | Goal Setting & Tracking Portal</title>
+    <style>
+      #splash-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        gap: 1rem;
+        background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.22), transparent 32%),
+                    linear-gradient(180deg, #0F172A 0%, #1E3A8A 100%);
+        color: #E2E8F0;
+        text-align: center;
+      }
+      #splash-screen .splash-card {
+        max-width: 320px;
+        width: 100%;
+      }
+      #splash-screen .splash-title {
+        margin-top: 0.75rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+      }
+      #splash-screen .splash-subtitle {
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        color: rgba(226, 232, 240, 0.85);
+      }
+      .splash-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.96);
+        transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s ease;
+      }
+      .splash-logo {
+        display: inline-flex;
+        width: 92px;
+        height: 92px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.08);
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="splash-screen">
+      <div class="splash-card">
+        <div class="splash-logo">
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 85 L35 20 L50 50 L30 85 Z" fill="#E2E8F0" />
+            <path d="M22 85 L42 38 L50 55 L36 85 Z" fill="#0F172A" />
+            <path d="M50 50 L65 20 L90 20 L90 35 L72 35 L56 75 Z" fill="#E2E8F0" />
+            <path d="M70 10 L100 10 L100 40 L88 28 L65 50 L55 40 L78 18 Z" fill="#E2E8F0" />
+          </svg>
+        </div>
+        <div class="splash-title">AtomAlign</div>
+        <div class="splash-subtitle">Goals aligned. Performance accelerated.</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      window.addEventListener('load', () => {
+        const splash = document.getElementById('splash-screen');
+        if (!splash) return;
+        setTimeout(() => {
+          splash.classList.add('splash-hidden');
+          setTimeout(() => splash.remove(), 600);
+        }, 2500);
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
