@@ -1,7 +1,16 @@
 import axios from 'axios';
 
+const rawApiUrl = import.meta.env.VITE_API_URL;
+const normalizedApiUrl = rawApiUrl
+  ? rawApiUrl.replace(/\/+$/, '') + '/api'
+  : window.location.hostname === 'localhost'
+    ? '/api'
+    : window.location.hostname.includes('vercel.app')
+      ? 'https://atomalign.onrender.com/api'
+      : 'https://atomalign.onrender.com/api';
+
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: normalizedApiUrl,
   headers: { 'Content-Type': 'application/json' }
 });
 
